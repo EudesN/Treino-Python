@@ -14,4 +14,9 @@ for n in valores:
     else:
         contador[n] = 1
 
+fMax = max(contador.values())
+
 print(contador)
+print(fMax)
+
+
