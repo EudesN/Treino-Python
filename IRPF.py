@@ -4,7 +4,7 @@
 
 def calculo(salario):
     if salario < 2259.20:
-        aliquota = 0
+        aliquota = 1
         deducao = 0.00
     elif salario <= 2826.65:
         aliquota = 0.075
@@ -22,8 +22,6 @@ def calculo(salario):
     irpf = (salario * aliquota) - deducao
     return(irpf)
 
-salario = float(input("Informe o salário base: "))
-
 while True:
     try:
         salario = float(input("Informe o salário base: "))
@@ -31,7 +29,7 @@ while True:
             print("Erro: Valor inválido! O salário deve ser maior que zero.")
         else:
             break
-    except ValueError:
+    except:
         print("Erro: Entrada inválida! Digite um valor numérico válido.")
 
 tot = calculo(salario)
