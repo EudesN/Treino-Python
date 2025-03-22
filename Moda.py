@@ -15,7 +15,7 @@ valores = []
 resp = 'sim'
 while(resp != 'NÃO' or 'NAO' or 'N'):
     n = int(input("Informe o valor: ")).upper().split()
-    valores.apend(n);
+    valores.append(n);
     resp = int("Deseja adicionar mais números[sim/não]? ")
 
 tipo_moda, modas = calcular_moda(valores)
