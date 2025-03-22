@@ -21,6 +21,6 @@ for k, freq in contador.items():
     if freq == fMax:
         modas.append(k)
 
-print("A moda(s) s " + modas)
+print("A moda(s) são " + modas)
 
 
