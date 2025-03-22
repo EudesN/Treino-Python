@@ -1,24 +1,17 @@
-def calcular_moda(valores):
-    contagem = {}
-    for valor in valores:
-        if valor in contagem:
-            contagem[valor] += 1
-        else:
-            contagem[valor] = 1
-
-    frequencia_maxima = max(contagem.values())
-
-    modas = [num for num, freq in contagem.items() if freq == frequencia_maxima]
-
 valores = []
+contador = {}
 
-resp = 'sim'
-while(resp != 'NÃO' or 'NAO' or 'N'):
-    n = int(input("Informe o valor: ")).upper().split()
-    valores.append(n);
-    resp = int("Deseja adicionar mais números[sim/não]? ")
+x = int(input("Informe quantos números deseja adicinar: "))
 
-tipo_moda, modas = calcular_moda(valores)
+while(len(valores) < x):
+    num = int(input("Informe o número: "))
+    valores.append(num)
 
-if modas:
-    print(f"Valor(es) da moda: {', '.join(map(str, modas))}")
+
+for n in valores:
+    if n in contador.keys():
+        contador[n] += 1
+    else:
+        contador[n] = 1
+
+print(contador)
