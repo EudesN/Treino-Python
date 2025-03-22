@@ -1,18 +1,14 @@
-
-
-
-
 def calculo(salario):
     if salario < 2259.20:
-        aliquota = 1
+        aliquota = 0
         deducao = 0.00
-    elif salario <= 2826.65:
+    elif salario >= 2259.21 and salario <= 2826.65:
         aliquota = 0.075
         deducao = 158.40
-    elif salario <= 3751.05:
+    elif salario >= 2826.66 and salario <= 3751.05:
         aliquota = 0.15
         deducao = 381.44
-    elif salario <= 4664.68:
+    elif salario >= 3751.06 and salario <= 4664.68:
         aliquota = 0.225
         deducao = 662.77
     else:
@@ -32,5 +28,4 @@ while True:
     except:
         print("Erro: Entrada inválida! Digite um valor numérico válido.")
 
-tot = calculo(salario)
-print(f"O valor do IRPF é: {tot:.2f}")
+print(f"O valor do IRPF é: {calculo(salario):.2f}")
