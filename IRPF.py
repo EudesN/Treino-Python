@@ -1,21 +1,21 @@
 def calculo(salario):
     if salario < 2259.20:
-        aliquota = 0
-        deducao = 0.00
+        aliq = 0
+        dedut = 0.00
     elif salario >= 2259.21 and salario <= 2826.65:
-        aliquota = 0.075
-        deducao = 158.40
+        aliq = 0.075
+        dedut = 158.40
     elif salario >= 2826.66 and salario <= 3751.05:
-        aliquota = 0.15
-        deducao = 381.44
+        aliq = 0.15
+        dedut = 381.44
     elif salario >= 3751.06 and salario <= 4664.68:
-        aliquota = 0.225
-        deducao = 662.77
+        aliq = 0.225
+        dedut = 662.77
     else:
-        aliquota = 0.275
-        deducao = 896.00
+        aliq = 0.275
+        dedut = 896.00
 
-    irpf = (salario * aliquota) - deducao
+    irpf = (salario * aliq) - dedut
     return(irpf)
 
 while True:

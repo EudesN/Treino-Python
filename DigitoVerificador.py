@@ -1,0 +1,1 @@
+cpf = int(input("Informe o cpf"))
