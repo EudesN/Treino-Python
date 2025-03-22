@@ -7,7 +7,6 @@ while(len(valores) < x):
     num = int(input("Informe o número: "))
     valores.append(num)
 
-
 for n in valores:
     if n in contador.keys():
         contador[n] += 1
@@ -22,6 +21,6 @@ for k, freq in contador.items():
     if freq == fMax:
         modas.append(k)
 
-print(modas)
+print("A moda(s) s " + modas)
 
 
