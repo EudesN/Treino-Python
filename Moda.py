@@ -16,7 +16,12 @@ for n in valores:
 
 fMax = max(contador.values())
 
-print(contador)
-print(fMax)
+modas = []
+
+for k, freq in contador.items():
+    if freq == fMax:
+        modas.append(k)
+
+print(modas)
 
 
