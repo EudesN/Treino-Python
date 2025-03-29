@@ -1,8 +1,8 @@
 class ArrayRedi:
     def __init__(self, tam = 4):
-        self.tam = tam
-        self.quantVal = 0
-        self.dados = [None] * tam
+        self.tam = tam # tamanho inicial da lsita q é 4
+        self.quantVal = 0 # quant de valores inseridos
+        self.dados = [None] * tam # 
 
 def mostrar(self):
     lista = []
