@@ -5,7 +5,6 @@ class ArrayRedi:
         self.dados = [None] * tam # 
 
     def mostrar(self):
-        lista = []
         for i in range (self.quantVal):
             print(self.dados[i])
 
@@ -19,29 +18,30 @@ class ArrayRedi:
     def inserirInicio(self, elemento):
         if self.quantVal == self.tam:
             self.redimensiona(2* self.tam)
-            for i in range(self.quantVal, 0, -1): # desloca a lista uma posição para direita para caber um valor na pos 0
-                self.dados[i] = self.dados[i - 1]
-            self.dados[0] = elemento
-            self.quantVal += 1
-            print(f"{elemento} foi adicionado ao inicio com sucesso")
+        for i in range(self.quantVal, 0, -1): # desloca a lista uma posição para direita para caber um valor na pos 0
+            self.dados[i] = self.dados[i - 1]
+        self.dados[0] = elemento
+        self.quantVal += 1
+        print(f"{elemento} foi adicionado ao inicio com sucesso")
 
     def excluir(self, elemento):
         for i in range(self.quantVal):
-            if self.dados == elemento:
+            if self.dados[i] == elemento:
 
                 for j in range(i, self.quantVal - 1):  # Desloca os elementos para a esquerda
                     self.dados[j] = self.dados[j + 1]
 
-                self.dados[self.tamanho - 1] = None
+                self.dados[self.quantVal - 1] = None
                 self.quantVal -= 1
                 print(f"{elemento} foi removido com sucesso")
                 return
-            print(f"{elemento} não está na lista")
+        print(f"{elemento} não está na lista")
 
     def buscar(self, elemento):
         for i in range(self.quantVal):
             if self.dados[i] == elemento:
                 print(f"O elemento {elemento} foi encotrado na posição {i}")
+                return
         print(f"{elemento} não foi encontrado na lista")
 
 
@@ -53,8 +53,8 @@ class ArrayRedi:
         self.dados = novaLista # troca a lsta antiga pela nova
         self.tam = novoTam # atualiza a capacidade da lista
 
-# Exemplo de uso
-array = ArrayRedi();
+
+array = ArrayRedi()
 
 array.inserirFinal(10)
 array.inserirFinal(20)
