@@ -53,6 +53,24 @@ def redimenciona(self, novoTam):
     self.dados = novaLista # troca a lsta antiga pela nova
     self.tam = novoTam # atualiza a capacidade da lista
 
+# Exemplo de uso
+array = ArrayRedi()
+
+array.inserir_final(10)
+array.inserir_final(20)
+array.inserir_final(30)
+array.inserir_final(40)  # Capacidade máxima alcançada
+array.inserir_final(50)  # Redimensiona automaticamente
+array.mostrar()
+
+array.inserir_inicio(5)
+array.mostrar()
+
+array.excluir(20)
+array.mostrar()
+
+array.buscar(30)
+array.buscar(100)  # Elemento inexistente
 
 
 
