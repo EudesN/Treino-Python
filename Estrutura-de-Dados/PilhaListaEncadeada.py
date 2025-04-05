@@ -30,11 +30,11 @@ class Stack:
         print("A pilha está vazia")
 
     def count(self):
-        return self.size
+        return self.size 
     
     def show(self):
         if(self.size == 0):
-            print("A pilha está vazia.")
+            return 'A pilha está vazia.'
 
         r = ""
         pointer = self.top
@@ -48,8 +48,8 @@ pilha = Stack()
 
 while True:
     print("\n---------- MENU ----------")
-    print("1- Empilhar (push)")
-    print("2- Desempilhar (pop)")
+    print("1- Empilhar")
+    print("2- Desempilhar")
     print("3- Mostrar pilha")
     print("4- Mostrar quantidade na pilha")
     print("0- Sair")
@@ -69,7 +69,9 @@ while True:
         print(pilha.show())
 
     elif opcao == "4":
-        print(pilha.count())
+        if pilha.count == 0:
+            print("A pilha não possui elementos.")
+        print(f"A pilha possui {pilha.count()} elementos")
 
     elif opcao == "0":
         print("Encerrando o programa.")
