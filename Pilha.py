@@ -32,7 +32,7 @@ class Stack:
     def count(self):
         return self.size
     
-    def __repr__(self):
+    def show(self):
         r = ""
         pointer = self.top
         while(pointer):
@@ -61,7 +61,7 @@ while True:
     elif opcao == "2":
         pilha.pop()
     elif opcao == "3":
-        pilha.mostrar()
+        pilha.show()
     elif opcao == "4":
         pilha.count()
     elif opcao == "5":
