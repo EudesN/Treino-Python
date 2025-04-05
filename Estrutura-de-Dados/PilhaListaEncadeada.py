@@ -38,7 +38,7 @@ class Stack:
 
         r = ""
         pointer = self.top
-        while(pointer):
+        while(pointer): # o ciclo se repete enquanto o ponteiro possuir valor
             r += " -> " + str(pointer.data)
             pointer = pointer.next
         return r
