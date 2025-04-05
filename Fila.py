@@ -26,8 +26,9 @@ class Queue:
 
     def dequeue(self): # retira o primeiro da fila
         if self.first:
-            removed = self.first
+            removed = self.first.data
             self.first = self.first.next
+
             if self.first is None:
                 self.last = None # fila ficou vazia
             self.size -= 1
@@ -59,4 +60,40 @@ class Queue:
 
 fila = Queue()
 
+while True:
+    print("\n========== MENU DA FILA ==========")
+    print("1 - Adicionar elemento (enqueue)")
+    print("2 - Remover elemento (dequeue)")
+    print("3 - Mostrar fila")
+    print("4 - Mostrar primeiro da fila (peek)")
+    print("5 - Mostrar quantidade de elementos")
+    print("0 - Sair")
+    print("===================================")
 
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        valor = input("Digite o valor para adicionar na fila: ")
+        fila.enqueue(valor)
+        print(f'"{valor}" adicionado à fila.')
+
+    elif opcao == "2":
+        removed = fila.dequeue()
+        print(f"Elemento removido: {removed}")
+
+    elif opcao == "3":
+        print("Fila atual:")
+        print(fila)
+
+    elif opcao == "4":
+        print("Primeiro da fila:", fila.peek())
+
+    elif opcao == "5":
+        print("Quantidade de elementos na fila:", len(fila))
+
+    elif opcao == "0":
+        print("Encerrando o programa.")
+        break
+
+    else:
+        print("Opção inválida. Tente novamente.")
