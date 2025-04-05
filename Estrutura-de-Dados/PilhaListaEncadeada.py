@@ -36,12 +36,12 @@ class Stack:
         if(self.size == 0):
             return 'A pilha está vazia.'
 
-        r = ""
+        s = ""
         pointer = self.top
         while(pointer): # o ciclo se repete enquanto o ponteiro possuir valor
-            r += " -> " + str(pointer.data)
-            pointer = pointer.next
-        return r
+            s += " -> " + str(pointer.data)
+            pointer = pointer.next #passa a apontar o próximo valor dele mesmo
+        return s
     
 
 pilha = Stack()
