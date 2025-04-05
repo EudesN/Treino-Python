@@ -10,10 +10,10 @@ class Stack:
 
 
     def push(self, elemento): # insere um elemento na pilha
-        node  = Node(elemento)
+        node  = Node(elemento) # cria um nó passando o valor - o cada node possui um data e next
         node.next = self.top # o elemento abaixo na pilha é o que antes estava no topo
         self.top = node  # o novo topo é o nó que chega
-        self.size = self.size + 1
+        self.size += + 1
         
 
     def pop(self): # remove o elemento do topo
