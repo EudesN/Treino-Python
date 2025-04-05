@@ -33,15 +33,16 @@ class Stack:
         return self.size
     
     def show(self):
+        if(self.size == 0):
+            print("A pilha está vazia.")
+
         r = ""
         pointer = self.top
         while(pointer):
-            r = r + str(pointer.data) + " -> "
+            r += " -> " + str(pointer.data)
             pointer = pointer.next
         return r
     
-    def __str__(self):
-        return self.__repr__()
 
 pilha = Stack()
 
@@ -50,9 +51,9 @@ while True:
     print("1- Empilhar (push)")
     print("2- Desempilhar (pop)")
     print("3- Mostrar pilha")
-    print("4- Mostrar quantidade de elementos")
+    print("4- Mostrar quantidade na pilha")
     print("0- Sair")
-    print("-----------------------------")
+    print("--------------------------")
 
 
     opcao = input("Escolha uma opção: ")
