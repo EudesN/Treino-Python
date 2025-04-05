@@ -29,14 +29,14 @@ class Stack:
             return self.top.data
         print("A pilha está vazia")
 
-    def __len__(self):
+    def count(self):
         return self.size
     
     def __repr__(self):
         r = ""
         pointer = self.top
         while(pointer):
-            r = r + str(pointer.data) + "\n"
+            r = r + str(pointer.data) + " -> "
             pointer = pointer.next
         return r
     
@@ -60,10 +60,10 @@ while True:
         pilha.push(valor)
     elif opcao == "2":
         pilha.pop()
-#    elif opcao == "3":
-#        pilha.mostrar()
-#    elif opcao == "4":
-#        pilha.contar()
+    elif opcao == "3":
+        pilha.mostrar()
+    elif opcao == "4":
+        pilha.count()
     elif opcao == "5":
         print("Encerrando o programa.")
         break
