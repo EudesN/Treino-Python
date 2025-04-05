@@ -9,7 +9,17 @@ class Stack:
         self.size = 0
 
 
+    def push(self, elemento): # insere um elemento na pilha
+        node  = Node(elemento)
+        node.next = self.top
+        self.top = node
         
+
+    def pop(self): # remove o elemento do topo
+        pass
+
+    def peek(): # retorna o elemento do topo da pilha sen remover
+        pass
 
     def __len__(self):
         return self.size
