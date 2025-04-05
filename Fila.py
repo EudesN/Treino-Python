@@ -19,9 +19,10 @@ class Queue:
         
         if self.first is None:
             self.first = node
+            self.last = node
         else:
-            self.first = node
-
+            self.last.next = node
+            self.last = node
         self.size += 1
 
     def dequeue(self): # retira o primeiro da fila
@@ -83,7 +84,7 @@ while True:
 
     elif opcao == "3":
         print("Fila atual:")
-        print(fila)
+        print(__re)
 
     elif opcao == "4":
         print("Primeiro da fila:", fila.peek())
