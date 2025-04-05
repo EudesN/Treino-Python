@@ -11,13 +11,7 @@ class Queue:
 
     def enqueue(self, elemento): # adiciona no final da fila
         node = Node(elemento)
-        if self.last is None:
-            self.last = node
-        else:
-            self.last.next = node
-            self.last = node
-        
-        if self.first is None:
+        if self.empty():  # fila vazia
             self.first = node
             self.last = node
         else:
@@ -33,7 +27,7 @@ class Queue:
             if self.first is None:
                 self.last = None # fila ficou vazia
             self.size -= 1
-            return removed.data
+            return removed
         print('A fila está vazia.')
 
     def peek(self): #monstra o primeiro elemento
@@ -84,7 +78,7 @@ while True:
 
     elif opcao == "3":
         print("Fila atual:")
-        print(__re)
+        print(fila.__repr__())
 
     elif opcao == "4":
         print("Primeiro da fila:", fila.peek())
