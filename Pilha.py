@@ -43,4 +43,33 @@ class Stack:
     def __str(self):
         return self.__repr__()
     
-p
+pilha = Stack()
+
+while True:
+    print("\n--- MENU ---")
+    print("1. Empilhar (push)")
+    print("2. Desempilhar (pop)")
+    print("3. Mostrar pilha")
+    print("4. Mostrar quantidade de elementos")
+    print("5. Sair")
+
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "1":
+        valor = input("Digite um número ou nome para empilhar: ")
+        pilha.push(valor)
+    elif opcao == "2":
+        pilha.pop()
+#    elif opcao == "3":
+#        pilha.mostrar()
+#    elif opcao == "4":
+#        pilha.contar()
+    elif opcao == "5":
+        print("Encerrando o programa.")
+        break
+    else:
+        print("Opção inválida! Tente novamente.")
+
+
+
+
