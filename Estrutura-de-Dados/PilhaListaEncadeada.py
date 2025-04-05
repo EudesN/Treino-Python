@@ -1,4 +1,4 @@
-class Node:
+class Node: # cada elemento possui um Node
     def __init__(self, data):
         self.data = data # dado que é empilhado
         self.next = None #  ponteiro para o próximo nó (abaixo dele na pilha)
@@ -13,7 +13,7 @@ class Stack:
         node  = Node(elemento) # cria um nó passando o valor - o cada node possui um data e next
         node.next = self.top # o elemento abaixo na pilha é o que antes estava no topo
         self.top = node  # o novo topo é o nó que chega
-        self.size += + 1
+        self.size += 1
         
 
     def pop(self): # remove o elemento do topo
