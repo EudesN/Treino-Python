@@ -11,22 +11,30 @@ class Stack:
 
     def push(self, elemento): # insere um elemento na pilha
         node  = Node(elemento)
-        node.next = self.top
-        self.top = node
+        node.next = self.top # o elemento abaixo na pilha é o que antes estava no topo
+        self.top = node  # o novo topo é o nó que chega
+        self.size = self.size + 1
         
 
     def pop(self): # remove o elemento do topo
-        pass
+        if self.size > 0:
+            node = self.top
+            self.top = self.top.next
+            self.size = self.size - 1
+            return node
+        print("A pilha está vazia")
 
-    def peek(): # retorna o elemento do topo da pilha sen remover
-        pass
+    def peek(self): # retorna o elemento do topo da pilha sen remover
+        if self.size > 0:
+            return self.top.data
+        print("A pilha está vazia")
 
     def __len__(self):
         return self.size
     
     def __repr__(self):
         r = ""
-        pointer = self.head
+        pointer = self.top
         while(pointer):
             r = r + str(pointer.data) + "->"
             pointer = pointer.next
