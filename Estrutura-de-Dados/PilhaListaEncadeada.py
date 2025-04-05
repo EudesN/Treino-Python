@@ -1,12 +1,12 @@
 class Node:
     def __init__(self, data):
-        self.data = data
-        self.next = None
+        self.data = data # dado que é empilhado
+        self.next = None #  ponteiro para o próximo nó (abaixo dele na pilha)
 
 class Stack:
     def __init__(self): # Contrutor
-        self.top = None
-        self.size = 0
+        self.top = None # o ultimo elemento empilhado(o topo da pilha)
+        self.size = 0 # quantos elementos tem na pilha
 
 
     def push(self, elemento): # insere um elemento na pilha
