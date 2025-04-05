@@ -21,7 +21,7 @@ class Stack:
             node = self.top
             self.top = self.top.next
             self.size = self.size - 1
-            return node
+            return node.data
         print("A pilha está vazia")
 
     def peek(self): # retorna o elemento do topo da pilha sen remover
@@ -40,7 +40,7 @@ class Stack:
             pointer = pointer.next
         return r
     
-    def __str(self):
+    def __str__(self):
         return self.__repr__()
     
 pilha = Stack()
