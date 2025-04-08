@@ -52,6 +52,7 @@ while True:
     print("2- Desempilhar")
     print("3- Mostrar pilha")
     print("4- Mostrar quantidade na pilha")
+    print("5- Mostrar o elemento do topo")
     print("0- Sair")
     print("--------------------------")
 
@@ -72,6 +73,9 @@ while True:
         if pilha.count == 0:
             print("A pilha não possui elementos.")
         print(f"A pilha possui {pilha.count()} elementos")
+
+    elif opcao == "5":
+        print(pilha.peek())
 
     elif opcao == "0":
         print("Encerrando o programa.")
