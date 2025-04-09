@@ -4,11 +4,11 @@ class Fila:
         self.dados = [None] * self.cap  # array inicializado com 4 posições todas com None
         self.inicio = 0                     # índice do primeiro elemento
         self.fim = 0                        # índice onde o próximo será inserido
-        self.tam = 0                    # total de elementos na fila
+        self.tam = 0                    # total de elementos na fila    
 
     def enqueue(self, nome):
-        if self.tam == self.cap:
-            self._redimencionar(self.cap * 2)
+        if self.tam == self.cap: # antes de inserir verifica se o array está cheio 
+            self._redimencionar(self.cap * 2) # se sim, é necessario chamar a função _redimencionar
         self.dados[self.fim] = nome
         self.fim = (self.fim + 1) % self.cap
         self.tam += 1
