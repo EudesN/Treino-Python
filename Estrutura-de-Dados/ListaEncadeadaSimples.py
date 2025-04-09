@@ -3,7 +3,7 @@ class Node:
         self.data = data
         self.next = None 
 
-class LinkedList:
+class LinkedList: # Não temos acesso direto aos elementos da lista. É necessário percorrer a lista a partir do início(cabeça).
     def __init__(self):
         self.head = None
         self.size = 0
