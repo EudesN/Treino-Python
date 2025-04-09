@@ -9,7 +9,7 @@ class Queue:
         self.last = None
         self.size = 0
 
-    def enqueue(self, elemento): # adiciona no final da fila
+    def enqueue(self, elemento): # adiciona no final da fila (push)
         node = Node(elemento)
         if self.empty():  # fila vazia
             self.first = node
@@ -19,7 +19,7 @@ class Queue:
             self.last = node
         self.size += 1
 
-    def dequeue(self): # retira o primeiro da fila
+    def dequeue(self): # retira o primeiro da fila (pop)
         if self.first:
             removed = self.first.data
             self.first = self.first.next
@@ -30,7 +30,7 @@ class Queue:
             return removed
         print('A fila está vazia.')
 
-    def peek(self): #monstra o primeiro elemento
+    def peek(self): #monstra o primeiro elemento (top)
         if self.first:
             return self.first.data
         print("Não há primeiro elemento. A fila está vazia. ")
