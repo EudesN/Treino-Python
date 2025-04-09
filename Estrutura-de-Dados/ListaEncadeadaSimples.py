@@ -37,6 +37,9 @@ class LinkedList:
     def __len__(self):
         return self.size
 
+    def empty(self):
+        return self.size == 0
+
 
 Lista = LinkedList()
 while True:
