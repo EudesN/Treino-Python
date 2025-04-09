@@ -10,6 +10,7 @@ class LinkedList:
 
     def append(self, elem):
         if self.head:
+            #inserção quando a lista já tem elementos
             pointer = self.head
             while(pointer.next):
                 pointer = pointer.next
