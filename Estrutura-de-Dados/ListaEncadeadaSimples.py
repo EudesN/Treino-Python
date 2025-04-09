@@ -56,7 +56,7 @@ class LinkedList: # Não temos acesso direto aos elementos da lista. É necessá
         return self.size
 
     def empty(self):
-        return self.size == 0
+        return self.head is None
 
 Lista = LinkedList()
 while True:
