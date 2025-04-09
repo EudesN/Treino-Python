@@ -18,7 +18,7 @@ class Fila:
             print("A fila está vazia")
             return None
         
-        nome = self.dados[self.inicio] 
+        nome = self.dados[self.inicio] # nome é igual ao primeiro elemento da fila
         self.dados[self.inicio] = None # limpa a referência
         self.inicio = (self.inicio + 1) % self.cap
         self.tam -= 1
