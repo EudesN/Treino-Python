@@ -18,9 +18,14 @@ class LinkedList:
         else:
             #primeira inserção
             self.head = Node(elem)
+        self.size += 1
     def __repr__(self):
+        if self.empty():
+            return 'A fila está vazia'
+
         exibirLista = ""
         pointer = self.head
+
         while pointer:
             exibirLista += str(pointer.data)
             pointer = pointer.next
@@ -29,19 +34,27 @@ class LinkedList:
             
         return exibirLista
 
+    def __len__(self):
+        return self.size
+
 
 Lista = LinkedList()
 while True:
+    print("-"* 30)
     print("1- Adicionar elemento a lista")
     print("2- Exibir lista")
+    print("3- Monstrar tamanho da lista")
     print("0- Sair")
+    print("-"* 30)
     opcao = int(input("Informe a opcão: "))
 
     if(opcao == 1):
         n = input("Informe o elemento: ")
         Lista.append(n)
     elif(opcao == 2):
-        print(Lista.__repr__())
+        print(f"Lista: {Lista.__repr__()}")
+    elif(opcao == 3):
+        print(f"A lista possui {Lista.__len__()} elementos")
     elif(opcao == 0):
         print("Encerrando...")
         break
