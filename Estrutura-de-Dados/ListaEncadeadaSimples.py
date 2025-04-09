@@ -40,7 +40,7 @@ while True:
         n = input("Informe o elemento: ")
         Lista.append(n)
     elif(opcao == 2):
-        print()
+        print(Lista.__repr__())
     elif(opcao == 0):
         print("Encerrando...")
         break
