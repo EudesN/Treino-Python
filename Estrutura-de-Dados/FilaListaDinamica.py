@@ -9,8 +9,7 @@ class Fila:
     def enqueue(self, nome):
         if self.tam == self.cap: # antes de inserir verifica se o array está cheio 
             self._redimencionar(self.cap * 2) # se sim, é necessario chamar a função _redimencionar
-        self.dados[self.fim] = nome
-        self.fim = (self.fim + 1) % self.cap
+        self.dados[self.tam] = nome # Insere o nome na próxima posição livre (índice = tamanho atual)
         self.tam += 1
 
     def dequeue(self):
