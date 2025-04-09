@@ -12,6 +12,22 @@ class Fila:
         self.dados[self.fim] = None
         self.fim = (self.fim + 1) % self.cap
         self.tam += 1
+
+    def dequeue(self):
+        if self.empty():
+            print("A fila está vazia")
+            return None
+        nome = self.dados[self.inicio]
+        self.dados[self.inicio] = None # limpa a posição
+        self.inicio = (self.inicio + 1) % self.cap
+        self.tam -= 1
+
+        #reduz a capacidade
+        if 0 < self.tam <= self.cap // 4 and self.cap > 4:
+            self._redimencionar(self.cap / 2)
     
     def _redimencionar(self, novaCap):
         novoArray = [None] * novaCap
+    
+    def empty(self):
+        return len(self) == 0
