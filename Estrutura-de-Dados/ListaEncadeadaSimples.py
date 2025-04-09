@@ -8,4 +8,10 @@ class LinkedList:
         self.head = None
         self.size = 0
 
+    def __append(self, elem):
+        if self.head:
+            pointer = self.head
+        else:
+            #primeira inserção
+            self.head = Node(elem)
 Lista = LinkedList()
