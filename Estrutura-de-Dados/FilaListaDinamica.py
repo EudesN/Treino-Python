@@ -10,15 +10,16 @@ class Fila:
         if self.tam == self.cap: # antes de inserir verifica se o array está cheio 
             self._redimencionar(self.cap * 2) # se sim, é necessario chamar a função redimencionar
         self.dados[self.fim] = nome
-        self.fim = (self.fim + 1) % self.cap
+        self.fim = (self.fim + 1) % self.cap # garante que quando chegar ao final do array o índice volte para o início (é circular).
         self.tam += 1
 
-    def dequeue(self):
+    def dequeue(self): # remove o nome do inicio da fila e retorna esse nome
         if self.empty():
             print("A fila está vazia")
             return None
-        nome = self.dados[self.inicio]
-        self.dados[self.inicio] = None # limpa a posição
+        
+        nome = self.dados[self.inicio] 
+        self.dados[self.inicio] = None # limpa a referência
         self.inicio = (self.inicio + 1) % self.cap
         self.tam -= 1
 
