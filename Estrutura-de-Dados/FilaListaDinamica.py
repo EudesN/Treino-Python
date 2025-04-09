@@ -1,7 +1,7 @@
 class Fila:
     def __init__(self):
         self.cap = 4                 # capacidade inicial do array
-        self.dados = [None] * self.cap  # array com valores None
+        self.dados = [None] * self.cap  # array inicializado com 4 posições todas com None
         self.inicio = 0                     # índice do primeiro elemento
         self.fim = 0                        # índice onde o próximo será inserido
         self.tam = 0                    # total de elementos na fila
