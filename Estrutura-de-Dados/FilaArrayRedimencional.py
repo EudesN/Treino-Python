@@ -51,7 +51,7 @@ class Fila:
              print(f"- {self.dados[(self.inicio + i) % self.cap]}")
 
     def showTotPes(self):
-        print(f"Total de pessoas: {self.tam}")
+        print(f"Total de pessoas: {self.tam}") 
 
 fila = Fila()
 
