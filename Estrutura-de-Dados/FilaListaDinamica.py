@@ -24,7 +24,7 @@ class Fila:
         self.tam -= 1
 
         #reduz a capacidade
-        if 0 < self.tam <= self.cap // 4 and self.cap > 4:
+        if self.tam <= self.cap // 4 and self.cap > 4:
             self._redimencionar(self.cap // 2)
         return nome
     
@@ -43,18 +43,24 @@ class Fila:
         return self.tam == 0
     
     def show(self):
+        if self.empty():
+            print("A fila está vazia")
+            return
         print("\nFila atual: ")
         for i in range(self.tam):
              print(f"- {self.dados[(self.inicio + i) % self.cap]}")
+
+    def showTotPes(self):
         print(f"Total de pessoas: {self.tam}")
 
 fila = Fila()
 
 while True:
-    print("\n=== MENU ===")
-    print("1. Enfileirar pessoa")
-    print("2. Desenfileirar pessoa")
-    print("3. Mostrar fila")
+    print("\n========= MENU =========")
+    print("1- Enfileirar pessoa")
+    print("2- Desenfileirar pessoa")
+    print("3- Mostrar fila")
+    print("4- Quantidade de elementos")
     print("0. Sair")
     opcao = input("Escolha uma opção: ")
 
@@ -70,6 +76,9 @@ while True:
 
     elif opcao == '3':
         fila.show()
+
+    elif opcao == '4':
+        fila.showTotPes()
 
     elif opcao == '0':
         print("Encerrando o programa.")
