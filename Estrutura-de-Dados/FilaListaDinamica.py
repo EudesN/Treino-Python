@@ -28,12 +28,13 @@ class Fila:
             self._redimencionar(self.cap // 2)
         return nome
     
-    def _redimencionar(self, novaCap):
-        novoArray = [None] * novaCap
+    def _redimencionar(self, novaCap): # ajustar o tamanho do array
+        novoArray = [None] * novaCap #novo array de acordo com a capacidade necessaria  
 
-        for i in range(self.tam):
+        for i in range(self.tam): # os dados do array antigo são copiados no novo
             novoArray[i] = self.dados[(self.inicio + i) % self.cap]
-        self.dados = novoArray
+        # atualiza os ponteiros da fila para funcionar no novo array
+        self.dados = novoArray 
         self.inicio = 0
         self.fim = self.tam
         self.cap = novaCap
