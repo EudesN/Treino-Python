@@ -1,7 +1,17 @@
 # implementar uma pilha com duas filas
 
 
-def PopPilha(self):
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prox = None
+
+class Fila:
+    def __init__(self):
+        self.first = None
+        self.last = None
+        
+    def PopPilha(self):
         qntd = fila1.quant()
         if qntd == 0:
             print("Fila vazia!")
