@@ -18,15 +18,15 @@ class Fila:
             print("A fila está vazia")
             return None
         
-        nome = self.dados[self.inicio] # nome é igual ao primeiro elemento da fila
-        self.dados[self.inicio] = None # faz a limpeza
-        self.inicio = (self.inicio + 1) % self.cap  # move o início
+        nome = self.dados[self.inicio] #  armazena o nome é igual ao primeiro elemento da fila
+        self.dados[self.inicio] = None # faz a limpeza da posição (coloca NOne no lugar)
+        self.inicio = (self.inicio + 1) % self.cap  # move o início o indice
         self.tam -= 1
 
-        #reduz a capacidade
+         # Reduz a capacidade caso a utilização seja 1/4 se a capacidade atual seja maior que 4
         if self.tam <= self.cap // 4 and self.cap > 4:
             self._redimencionar(self.cap // 2)
-        return nome
+        return nome # retorna o nome removido
     
     def _redimencionar(self, novaCap): # ajustar o tamanho do array
         novoArray = [None] * novaCap #novo array de acordo com a capacidade necessaria  
