@@ -9,7 +9,7 @@ class Fila:
     def enqueue(self, nome):
         if self.tam == self.cap: # antes de inserir verifica se o array está cheio 
             self._redimencionar(self.cap * 2) # se sim, é necessario chamar a função redimencionar
-        self.dados[self.fim] = nome
+        self.dados[self.fim] = nome # insere o nome na posição 'fim'
         self.fim = (self.fim + 1) % self.cap # garante que quando chegar ao final do array o índice volte para o início (é circular).
         self.tam += 1
 
@@ -19,8 +19,8 @@ class Fila:
             return None
         
         nome = self.dados[self.inicio] # nome é igual ao primeiro elemento da fila
-        self.dados[self.inicio] = None # limpa a referência
-        self.inicio = (self.inicio + 1) % self.cap
+        self.dados[self.inicio] = None # faz a limpeza
+        self.inicio = (self.inicio + 1) % self.cap  # move o início
         self.tam -= 1
 
         #reduz a capacidade
