@@ -10,7 +10,15 @@ class Fila:
     def __init__(self):
         self.first = None
         self.last = None
-        
+
+
+class PilhaComFila:
+    def __init__(self):
+        self.fila1 = Fila()
+        self.fila2 = Fila()
+
+
+
     def PopPilha(self):
         qntd = fila1.quant()
         if qntd == 0:
