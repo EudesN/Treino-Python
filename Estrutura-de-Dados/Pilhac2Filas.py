@@ -1,5 +1,20 @@
 # implementar uma pilha com duas filas
-class PilhaComFilas:
-    def __init__(self):
-        self.fila1
-        self.fila2
+def PopPilha(self):
+        qntd = fila1.quant()
+        if qntd == 0:
+            print("Fila vazia!")
+            return
+        elif qntd == 1:
+            print(f"{fila1.head.valor} removido")
+            fila1.dequeue()
+            return
+        else:
+            aux = fila1.head
+            fila2 = Fila()
+            for i in range(qntd - 1):
+                fila2.enqueue(aux.valor)
+                aux = aux.prox
+                fila1.dequeue() 
+            print(f"{aux.valor} removido!")
+            fila1.dequeue()
+            fila1.head = fila2.head
