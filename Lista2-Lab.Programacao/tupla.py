@@ -16,14 +16,14 @@ while True:
             ponto = (x, y)
             rota.append(ponto)
             print(f"Ponto {ponto} adicionado com sucesso!")
-        except:
+        except ValueError:
             print("Coordenadas inválidas")
     
     if opcao == '2':
         if not rota:
             print("Rota vazia")
         else:
-            for i, ponto in rota:
+            for i, ponto in enumerate(rota):
                 print(f"Ponto {i}: {ponto}")
 
             try:
@@ -47,7 +47,7 @@ while True:
                 print(f"Ponto{i}: {ponto}")
 
     elif opcao == '4':
-        print("Encerrando programa... Até logo!")
+        print("Encerrando programa...")
         break
 
     else:
