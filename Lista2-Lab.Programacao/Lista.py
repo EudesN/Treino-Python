@@ -6,7 +6,7 @@ while True:
     print("2 - Buscar aluno")
     print("3 - Exibir alunos em ordem alfabética")
     print("4 - Remover aluno")
-    print("0 - Sair")
+    print("5 - Sair")
 
     opcao = input("Informe a opção: ")
 
@@ -36,7 +36,7 @@ while True:
             print(f"Aluno {nome} não foi encotrado na lista")
         print(f"Lista atual: {alunos}")
 
-    elif opcao == '0':
+    elif opcao == '5':
         print("encerrando programa...")
         break
     else:
