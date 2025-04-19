@@ -11,17 +11,15 @@ while True:
     opcao = input("Informe a opção: ")
 
     if opcao == '1':
-        nome = str(input("Infome o nome do aluno a ser inserido: "))
+        nome = str(input("Infome o nome do aluno a ser inserido: ")).strip()
         Lista.append(nome)
     
     elif opcao == '2':
-        nome = str(input("Informe o nome para a busca: "))
-
-        for n in Lista:
-            if Lista[n] == nome:
-                print(f"Nome encontrado na lista na posição {n}.")
-            else:
-                print("Nome não encotrado na lista")
+        nome = str(input("Informe o nome para a busca: ")).strip()
+        if nome in Lista:
+            print(f"Nome encontrado na lista")
+        else:
+            print("Nome não encotrado na lista")
     
     elif opcao == '3':
         Lista.sort()
@@ -29,12 +27,11 @@ while True:
 
     elif opcao == '4':
         nome = input("Digite o nome do aluno a ser removido: ").strip()
-        for n in Lista:
-            if Lista[n] == nome:
+        if nome in Lista:
                 Lista.remove(nome)
                 print(f"Aluno {nome} removido com sucesso.")
-            else:
-                print(f"Aluno {nome} não foi encotrado na lista")
+        else:
+            print(f"Aluno {nome} não foi encotrado na lista")
         
 
     elif opcao == '0':
