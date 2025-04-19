@@ -1,4 +1,4 @@
-Lista = []
+alunos = []
 
 while True:
     print("\nMenu de opções:")
@@ -12,27 +12,29 @@ while True:
 
     if opcao == '1':
         nome = str(input("Infome o nome do aluno a ser inserido: ")).strip()
-        Lista.append(nome)
+        alunos.append(nome)
+        print(f"Aluno {nome} foi inserido com sucesso")
+        print(f"Lista atual: {alunos}")
     
     elif opcao == '2':
         nome = str(input("Informe o nome para a busca: ")).strip()
-        if nome in Lista:
+        if nome in alunos:
             print(f"Nome encontrado na lista")
         else:
             print("Nome não encotrado na lista")
     
     elif opcao == '3':
-        Lista.sort()
-        print(f"A lista em ordem alfabética: {Lista}")
+        alunos.sort()
+        print(f"A lista em ordem alfabética: {alunos}")
 
     elif opcao == '4':
         nome = input("Digite o nome do aluno a ser removido: ").strip()
-        if nome in Lista:
-                Lista.remove(nome)
+        if nome in alunos:
+                alunos.remove(nome)
                 print(f"Aluno {nome} removido com sucesso.")
         else:
             print(f"Aluno {nome} não foi encotrado na lista")
-        
+        print(f"Lista atual: {alunos}")
 
     elif opcao == '0':
         print("encerrando programa...")
