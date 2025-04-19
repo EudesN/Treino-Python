@@ -24,17 +24,35 @@ while True:
             print("Rota vazia")
         else:
             for i, ponto in rota:
-                print(f"{i}: {ponto}")
+                print(f"Ponto {i}: {ponto}")
 
             try:
                 indice = int(input("Informe o índice do ponto a ser removido: "))
                 if 0 <= indice < len(rota):
                     removido = rota[indice]
+
                     del rota[indice]
                     print(f"Ponto {removido} removido com sucesso.")
                 else:
                     print("Índice fora do intervalo.")
             except ValueError:
                 print("Índice inválido")
+    
+    if opcao == '3':
+        if not rota:
+            print("A rota está vazia.")
+        else:
+            print("Rota atual:")
+            for i, ponto in enumerate(rota):
+                print(f"Ponto{i}: {ponto}")
+
+    elif opcao == '4':
+        print("Encerrando programa... Até logo!")
+        break
+
+    else:
+        print("Opção inválida")
+
+
 
 
