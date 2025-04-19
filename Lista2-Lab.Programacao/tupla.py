@@ -9,4 +9,18 @@ while True:
 
     opcao = input("Informe a opção: ")
 
+    if opcao == '1':
+        try:
+            x = float(input("Informe a coordenada X: "))
+            y = float(input("Informe a coordenada Y: "))
+            ponto = (x, y)
+            rota.append(ponto)
+            print(f"Ponto {ponto} adicionado com sucesso!")
+        except:
+            print("Coordenadas inválidas")
+    
+    if opcao == '2':
+        if not rota:
+            print("Rota vazia")
+
 
