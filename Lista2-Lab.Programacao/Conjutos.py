@@ -31,14 +31,24 @@ while True:
     if opcao == '1':
         conj1, conj2 = selConjunto()
         if conj1 is not None and conj2 is not None:
-            resultado = conj1 | conj2
-            print("Resultado da união:", resultado)
+            res = conj1 | conj2
+            print("Resultado da união:", res)
 
     if opcao == '2':
         conj1, conj2 = selConjunto()
         if conj1 is not None and conj2 is not None:
-            resultado = conj1 & conj2
-            print("Resultado da interseção:", resultado)
+            res = conj1 & conj2
+            print("Resultado da interseção:", res)
+
+    if opcao == '3':
+        conj1, conj2 = selConjunto()
+        if conj1 is not None and conj2 is not None:
+            res = conj1 - conj2
+            print("Resultado da interseção:", res)
+    
+    if opcao == '4':
+        print("encerrando programa...")
+        break
 
 
 
