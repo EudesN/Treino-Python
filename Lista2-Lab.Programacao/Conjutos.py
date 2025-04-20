@@ -31,9 +31,14 @@ while True:
     if opcao == '1':
         conj1, conj2 = selConjunto()
         if conj1 is not None and conj2 is not None:
-            resultado = c1.union(c2)
+            resultado = conj1 | conj2
             print("Resultado da união:", resultado)
 
+    if opcao == '2':
+        conj1, conj2 = selConjunto()
+        if conj1 is not None and conj2 is not None:
+            resultado = conj1 & conj2
+            print("Resultado da interseção:", resultado)
 
 
 
