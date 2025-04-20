@@ -19,7 +19,7 @@ while True:
         except ValueError:
             print("Coordenadas inválidas")
     
-    if opcao == '2':
+    elif opcao == '2':
         if not rota:
             print("Rota vazia")
         else:
@@ -38,7 +38,7 @@ while True:
             except ValueError:
                 print("Índice inválido")
     
-    if opcao == '3':
+    elif opcao == '3':
         if not rota:
             print("A rota está vazia.")
         else:
