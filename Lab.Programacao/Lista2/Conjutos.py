@@ -44,7 +44,7 @@ while True:
         conj1, conj2 = selConjunto()
         if conj1 is not None and conj2 is not None:
             res = conj1 - conj2
-            print("Resultado da interseção:", res)
+            print("Resultado da diferença:", res)
     
     if opcao == '4':
         print("encerrando programa...")
