@@ -11,7 +11,16 @@ def inserirPessoa(dados):
 
     print("pessoas cadastrada com sucesso")
 
-# def listarPessoas(dados):
+def listarPessoas(dados):
+    if not dados:
+        print("Nenhuma pessoa foi cadastrada")
+        return
+    for cpf, info in dados.itens():
+        print(f"CPF: {cpf}")
+        print(f"Nome: {dados['nome']}")
+        print(f"Endereço: {dados['endereco']}")
+        print(f"Telefones: {', '.join(dados['telefones'])}")
+        print("-" * 30)
 
 def menu():
     pessoas = {}
@@ -31,6 +40,8 @@ while True:
     if opcao == '1':
         inserirPessoa(pessoas)
     
+    if opcao == '2':
+        listarPessoas(pessoas)
 
     if opcao == '6':
         print("Encerrando programa...")
