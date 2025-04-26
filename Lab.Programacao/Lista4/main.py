@@ -26,7 +26,31 @@ def BuscarPorCPF():
             if(dados[0] == cpf):
                 print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
                 return
-    print("CPF não foi encotrado nos arquivos")
+    print("O CPF não foi encotrado nos arquivos")
+
+def BuscarPorTelefone():
+    telefone = input("Informe o telefone para a busca: ")
+    with open('arquivos.txt', 'r') as arquivo:
+        listagem = arquivo.readlines()
+        for linha in listagem:
+            dados = linha.strip().split(',')
+            if(dados[3] == telefone):
+                print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
+                return
+    print("O telefone não foi encotrado nos arquivos")
+
+def removerPorCpf():
+    cpf = input("Informe o cpf para a busca: ")
+    with open('arquivos.txt', 'r') as arquivo:
+        listagem = arquivo.readlines()
+        for linha in listagem:
+            dados = linha.strip().split(',')
+            if(dados[0] == cpf):
+                print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
+                return
+    print("O CPF não foi encotrado nos arquivos")
+
+
 
 while True:
 
@@ -47,14 +71,14 @@ while True:
     elif opcao == '2':
         listarPessoas()
 
-    # elif opcao == '3':
-    #     buscarPorCpf()
+    elif opcao == '3':
+        buscarPorCpf()
 
-    # elif opcao == '4':
-    #     buscarPorTelefone()
+    elif opcao == '4':
+        buscarPorTelefone()
     
-    # elif opcao == '5':
-    #     removerPorCpf()
+    elif opcao == '5':
+        removerPorCpf()
     
     elif opcao == '6':
         print("Encerrando programa...")
