@@ -4,6 +4,7 @@ def inserirPessoa():
     nome = input("Informe seu nome: ")
     endereco = input("Informe seu endereço: ")
     telefone = input("Informe seu telefone: ")
+
     with open('arquivos.txt', 'a') as arquivo:
         arquivo.write(f"{cpf},{nome},{endereco},{telefone}\n")
 
@@ -40,25 +41,29 @@ def buscarPorTelefone():
     print("O telefone não foi encotrado nos arquivos")
 
 def removerPorCpf():
+    cpf = input("Informe o cpf para a busca: ").strip()
     existe = False
-    cpf = input("Informe o cpf para a busca: ")
-    with open('arquivos.txt', 'r') as arquivo:
-        listagem = arquivo.readlines()
-        for linha in listagem:
-            dados = linha.strip().split(',')
-            if(dados[0] == cpf):
-                existe = True
-    linhasNovas = []
-    if(existe):
-        for linha in listagem:
-            if not linha.startswith(cpf + ','):
-                linhasNovas.append(linha)
-            
-        with open('arquivos.txt', 'w') as arquivo:
-            arquivo.writelines(linhasNovas)
+    
+    try:
+        with open('arquivos.txt', 'r') as arquivo:
+            listagem = arquivo.readlines()
+            linhasNovas = []
 
+            for linha in listagem:
+                if not linha.startswith(cpf + ','):
+                    linhasNovas.append(linha)
+                else:
+                    existe = True
 
-    print("O CPF não foi encotrado nos arquivos")
+        if existe:
+            with open('arquivos.txt', 'w') as arquivo:
+                arquivo.writelines(linhasNovas)
+                print("Pessoa removida com sucesso")
+        else:
+            print("O CPF não foi encontrado nos arquivos")
+
+    except FileNotFoundError:
+        print("Nenhum dado foi cadastrado")
 
 
 while True:
