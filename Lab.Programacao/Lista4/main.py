@@ -12,10 +12,21 @@ def listarPessoas():
         listagem = arquivo.readlines()
         for linha in listagem:
             dados = linha.strip().split(',')
-            print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
+            if len(dados) >= 4:
+                print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
+            else:
+                print("Linha de informações incompleta ou inválida", linha.strip())
 
-
-
+def BuscarPorCPF():
+    cpf = input("Informe o cpf para a busca: ")
+    with open('arquivos.txt', 'r') as arquivo:
+        listagem = arquivo.readlines()
+        for linha in listagem:
+            dados = linha.strip().split(',')
+            if(dados[0] == cpf):
+                print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
+                return
+    print("CPF não foi encotrado nos arquivos")
 
 while True:
 
