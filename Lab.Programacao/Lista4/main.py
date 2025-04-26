@@ -11,8 +11,8 @@ def listarPessoas():
     with open('arquivos.txt', 'r') as arquivo:
         listagem = arquivo.readlines()
         for linha in listagem:
-            dados = linha.strip().split
-            print(linha)
+            dados = linha.strip().split(',')
+            print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
 
 
 
