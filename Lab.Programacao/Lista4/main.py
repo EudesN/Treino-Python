@@ -1,12 +1,22 @@
 
 def inserirPessoa():
-    cpf = input("Informe o cpf: ")
-    nome = input("Informe seu nome: ")
-    endereco = input("Informe seu endereço: ")
-    telefone = input("Informe seu telefone: ")
+    cpf = input("Informe o cpf: ").strip()
+    nome = input("Informe seu nome: ").strip()
+    endereco = input("Informe seu endereço: ").strip()
+
+    telefones = []
+    while True:
+        telefone = str(input("Informe seu telefone: ")).strip()
+        if telefone:
+            telefones.append(''.join(filter(str.isdigit, telefone))) #vai tirar quanquer caractere q não seja um digito
+        elif not telefones:
+            print("É necessário informar um telefone pelo menos")
+        else:
+            break
+
 
     with open('arquivos.txt', 'a') as arquivo:
-        arquivo.write(f"{cpf},{nome},{endereco},{telefone}\n")
+        arquivo.write(f"{cpf},{nome},{endereco},{';'.join(telefones)}\n")
 
 def listarPessoas():
     with open('arquivos.txt', 'r') as arquivo:
@@ -19,7 +29,7 @@ def listarPessoas():
                 print("Linha de informações incompleta ou inválida", linha.strip())
 
 def buscarPorCpf():
-    cpf = input("Informe o cpf para a busca: ")
+    cpf = input("Informe o cpf para a busca: ").strip()
     with open('arquivos.txt', 'r') as arquivo:
         listagem = arquivo.readlines()
         for linha in listagem:
@@ -30,7 +40,7 @@ def buscarPorCpf():
     print("O CPF não foi encotrado nos arquivos")
 
 def buscarPorTelefone():
-    telefone = input("Informe o telefone para a busca: ")
+    telefone = input("Informe o telefone para a busca: ").strip()
     with open('arquivos.txt', 'r') as arquivo:
         listagem = arquivo.readlines()
         for linha in listagem:
