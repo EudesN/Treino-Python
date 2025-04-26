@@ -17,6 +17,7 @@ def inserirPessoa():
 
     with open('arquivos.txt', 'a') as arquivo:
         arquivo.write(f"{cpf},{nome},{endereco},{';'.join(telefones)}\n")
+        print("Pessoa cadastrada com sucesso")
 
 def listarPessoas():
     with open('arquivos.txt', 'r') as arquivo:
