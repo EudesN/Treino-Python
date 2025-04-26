@@ -5,22 +5,19 @@ def inserirPessoa():
     endereco = input("Informe seu endereço: ")
     telefone = input("Informe seu telefone: ")
     with open('arquivos.txt', 'a') as arquivo:
-        arquivo.write(cpf + '\n')
-        arquivo.write(nome+ '\n')
-        arquivo.write(endereco+ '\n')
-        arquivo.write(",".join(telefone) + '\n')
+        arquivo.write(f"{cpf},{nome},{endereco},{telefone}\n")
 
 def listarPessoas():
     with open('arquivos.txt', 'r') as arquivo:
         listagem = arquivo.readlines()
         for linha in listagem:
-            print(linha.strip())
+            print(linha)
 
 
 
 
 while True:
-    
+
     print("-" * 30)
     print("1. Inserir pessoa")
     print("2. Listar pessoas cadastradas")
