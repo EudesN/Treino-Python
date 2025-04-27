@@ -6,7 +6,7 @@ def inserirPessoa():
 
     telefones = []
     while True:
-        telefone = str(input("Informe seu telefone: ")).strip()
+        telefone = input("Informe um telefone (deixe em branco para parar): ").strip()
         if telefone:
             telefones.append(''.join(filter(str.isdigit, telefone))) #vai tirar quanquer caractere q não seja um digito
         elif not telefones:
