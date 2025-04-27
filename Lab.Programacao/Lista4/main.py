@@ -61,10 +61,10 @@ def buscarPorTelefone():
                     telefones = dados[3].split(';')
                     print(f"\nNome: {dados[1]}\nCPF: {dados[0]}\nEndereço: {dados[2]}")
                     print("Telefones:", ", ".join(telefones))
-                    encontrou = True
+                    existe = True
                     break
             
-            if not encontrou:
+            if not existe:
                 print("Telefone não encontrado nos arquivos.")
 
     except FileNotFoundError:   
