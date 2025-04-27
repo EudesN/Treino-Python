@@ -59,8 +59,7 @@ def buscarPorTelefone():
                 dados = linha.strip().split(',')
                 if telefone in dados[3].split(';'):
                     telefones = dados[3].split(';')
-                    print(f"\nNome: {dados[1]}\nCPF: {dados[0]}\nEndereço: {dados[2]}")
-                    print("Telefones:", ", ".join(telefones))
+                    print(f"Nome: {dados[1]} | CPF: {dados[0]} | Endereço: {dados[2]} | Telefones: {','.join(telefones)}")
                     existe = True
                     break
             
