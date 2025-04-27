@@ -28,7 +28,7 @@ def listarPessoas():
                 if len(dados) >= 4:
                     print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
                 else:
-                    print("Linha de informações incompleta ou inválida", linha.strip())
+                    continue
     except FileNotFoundError:
         print("Nenhuma pessoa cadastrada")
 
