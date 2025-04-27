@@ -64,7 +64,7 @@ def buscarPorTelefone():
                         existe = True
                         break
                 else:
-                    print("Linha inválida encontrada e ignorada:", linha.strip())
+                    continue
             if not existe:
                 print("Telefone não encontrado nos arquivos.")
 
