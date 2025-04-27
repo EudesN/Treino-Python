@@ -30,17 +30,25 @@ def listarPessoas():
                 else:
                     print("Linha de informações incompleta ou inválida", linha.strip())
     except FileNotFoundError:
-        print()
+        print("Nenhuma pessoa cadastrada")
+
 def buscarPorCpf():
     cpf = input("Informe o cpf para a busca: ").strip()
-    with open('arquivos.txt', 'r') as arquivo:
-        listagem = arquivo.readlines()
-        for linha in listagem:
-            dados = linha.strip().split(',')
-            if(dados[0] == cpf):
-                print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
-                return
-    print("O CPF não foi encotrado nos arquivos")
+    try:
+        with open('arquivos.txt', 'r') as arquivo:
+            existe = False
+            for linha in arquivo:
+                dados = linha.strip().split(',')
+                if dados[0] == cpf:
+                    telefones = dados[3].split(';')
+                    print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {','.join(telefones)}")
+                    existe = True
+                    break
+            if not existe:
+                print("O CPF não foi encotrado nos arquivos")
+    except FileNotFoundError:
+        print("Nenhuma pessoa cadastrada ainda.")
+
 
 def buscarPorTelefone():
     telefone = input("Informe o telefone para a busca: ").strip()
