@@ -57,12 +57,14 @@ def buscarPorTelefone():
             existe = False
             for linha in arquivo:
                 dados = linha.strip().split(',')
-                if telefone in dados[3].split(';'):
-                    telefones = dados[3].split(';')
-                    print(f"Nome: {dados[1]} | CPF: {dados[0]} | Endereço: {dados[2]} | Telefones: {','.join(telefones)}")
-                    existe = True
-                    break
-            
+                if len(dados) >= 4:
+                    if telefone in dados[3].split(';'):
+                        telefones = dados[3].split(';')
+                        print(f"Nome: {dados[1]} | CPF: {dados[0]} | Endereço: {dados[2]} | Telefones: {','.join(telefones)}")
+                        existe = True
+                        break
+                else:
+                    print("Linha inválida encontrada e ignorada:", linha.strip())
             if not existe:
                 print("Telefone não encontrado nos arquivos.")
 
