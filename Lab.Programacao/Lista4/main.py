@@ -22,8 +22,7 @@ def inserirPessoa():
 def listarPessoas():
     try:
         with open('arquivos.txt', 'r') as arquivo:
-            listagem = arquivo.readlines()
-            for linha in listagem:
+            for linha in arquivo:
                 dados = linha.strip().split(',')
                 if len(dados) >= 4:
                     print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
