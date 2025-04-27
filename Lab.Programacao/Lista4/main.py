@@ -52,14 +52,24 @@ def buscarPorCpf():
 
 def buscarPorTelefone():
     telefone = input("Informe o telefone para a busca: ").strip()
-    with open('arquivos.txt', 'r') as arquivo:
-        listagem = arquivo.readlines()
-        for linha in listagem:
-            dados = linha.strip().split(',')
-            if(dados[3] == telefone):
-                print(f"Nome: {dados[1]} | CPF: {dados[0]}  | Endereço: {dados[2]} | Telefone: {dados[3]}")
-                return
-    print("O telefone não foi encotrado nos arquivos")
+    try:
+        with open('arquivos.txt', 'r') as arquivo:
+            existe = False
+            for linha in arquivo:
+                dados = linha.strip().split(',')
+                if telefone in dados[3].split(';'):
+                    telefones = dados[3].split(';')
+                    print(f"\nNome: {dados[1]}\nCPF: {dados[0]}\nEndereço: {dados[2]}")
+                    print("Telefones:", ", ".join(telefones))
+                    encontrou = True
+                    break
+            
+            if not encontrou:
+                print("Telefone não encontrado nos arquivos.")
+
+    except FileNotFoundError:   
+        print("Nenhuma pessoa cadastrada ainda.")
+
 
 def removerPorCpf():
     cpf = input("Informe o cpf para a busca: ").strip()
