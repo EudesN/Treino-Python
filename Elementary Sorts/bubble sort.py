@@ -8,12 +8,10 @@ def bubble_sort(lista):
                 lista[i + 1] = aux  
 
 
-
-
 lista = [4, 9, 2, 1, 7, 8]
 
-
-
+lista_ordenada = bubble_sort(lista)
+print(lista_ordenada)
 
 
 
