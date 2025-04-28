@@ -1,6 +1,6 @@
 def bubble_sort(lista): # 
     n = len(lista)
-    for j in range(n - 1):
+    for j in range(n - 1 - j): # o 'J'é utilizado como otimização pois os últimos elementos já estão ordenados. Isso evita comparações desnecessárias com elementos já ordenados.
         for i in range(n - 1): # não é necessario percorrer até o ultimo indice pq não há ninguem para comparar depois, então se compara até o penultimo
             if lista[i] > lista[i + 1]: 
                 aux = lista[i]
