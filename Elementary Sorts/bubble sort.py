@@ -1,11 +1,11 @@
-def bubble_sort(lista):
+def bubble_sort(lista): # 
     n = len(lista)
     for j in range(n - 1):
         for i in range(n - 1): # não é necessario percorrer até o ultimo indice pq não há ninguem para comparar depois, então se compara até o penultimo
-            if lista[i] > lista[i + 1]:
+            if lista[i] > lista[i + 1]: 
                 aux = lista[i]
                 lista[i] = lista[i + 1]
-                lista[i + 1] = aux  
+                lista[i + 1] = aux  # o maior elemento "bolha"  é empurrado para o final da lista
 
 lista_aleatoria = [12, 5, 23, 8, 3, 17, 14, 29, 6, 2, 18, 9, 11, 30, 7, 21, 1, 4, 25, 15]
 lista_invertida = [28, 22, 19, 16, 13, 12, 11, 9, 7, 5, 4, 3, 2, 2, 1, 1, 0, 0, -2, -5]
