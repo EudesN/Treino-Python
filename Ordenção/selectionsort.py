@@ -4,51 +4,47 @@ from typing import List, Dict, Tuple
 
 
 def ler_arquivo(nome_arquivo: str) -> List[str]:
+    """Lê o conteúdo de um arquivo e retorna uma lista de palavras normalizadas (apenas letras minúsculas)."""
     with open(nome_arquivo, 'r', encoding='utf-8') as file:
         conteudo = file.read()
     palavras = re.findall(r'\b[a-zA-Z]+\b', conteudo.lower())
     return palavras
 
 
-def bubble_sort(lista: List[str]) -> List[str]:
+def selection_sort(lista: List[str]) -> List[str]:
+    """Ordena a lista usando o algoritmo Selection Sort com barra de progresso leve."""
     n = len(lista)
-    ultimo_progresso = -5  # para garantir que 0% seja mostrado
-
+    print("🔄 Iniciando ordenação com Selection Sort...")
     for i in range(n):
-        progresso = int((i / n) * 100)
-        if progresso % 5 == 0 and progresso != ultimo_progresso:
-            print(f"Progresso: {progresso}%")
-            ultimo_progresso = progresso
-
-        trocou = False
-        for j in range(0, n - i - 1):
-            if lista[j] > lista[j + 1]:
-                lista[j], lista[j + 1] = lista[j + 1], lista[j]
-                trocou = True
-        if not trocou:
-            break
-
-    print("Progresso: 100%")
+        if i % (n // 20 + 1) == 0:  # Exibe progresso a cada ~5% de avanço
+            progresso = (i / n) * 100
+            print(f"Progresso: {progresso:.1f}%")
+        menor_indice = i
+        for j in range(i + 1, n):
+            if lista[j] < lista[menor_indice]:
+                menor_indice = j
+        if menor_indice != i:
+            lista[i], lista[menor_indice] = lista[menor_indice], lista[i]
+    print("✅ Ordenação concluída.")
     return lista
 
 
 def testar_algoritmo(arquivos: List[str]) -> Tuple[List[Dict[str, str]], List[float]]:
+    """Executa o algoritmo Selection Sort em cada arquivo e mede o tempo de execução."""
     resultados = []
     tempos = []
-    
+
     for arquivo in arquivos:
-        print(f"\n📁 Processando arquivo: {arquivo}")
+        print(f"\n📁 Lendo arquivo: {arquivo}")
         palavras = ler_arquivo(arquivo)
-        
+
+        print(f"📦 Total de palavras: {len(palavras)}")
+
         start_time = time.time()
-        palavras_ordenadas = bubble_sort(palavras)
+        palavras_ordenadas = selection_sort(palavras)
         tempo = time.time() - start_time
 
-        # Mostrar as palavras ordenadas
-        print(f"\n🔤 Palavras ordenadas do arquivo {arquivo}:\n")
-        print(', '.join(palavras_ordenadas))
-        # Se quiser limitar a exibição:
-        # print(', '.join(palavras_ordenadas[:50]) + ' ...')
+        print(f"⏱️ Tempo para ordenar '{arquivo}': {tempo:.6f} segundos")  # Tempo individual exibido
 
         resultados.append({
             "Arquivo": arquivo,
@@ -56,11 +52,12 @@ def testar_algoritmo(arquivos: List[str]) -> Tuple[List[Dict[str, str]], List[fl
             "Tempo (s)": f"{tempo:.6f}"
         })
         tempos.append(tempo)
-    
+
     return resultados, tempos
 
 
 def imprimir_tabela(resultados: List[Dict[str, str]]):
+    """Imprime uma tabela com os resultados da ordenação."""
     print("\n+-----------------+------------+-------------+")
     print("| Arquivo         | Palavras   | Tempo (s)   |")
     print("+-----------------+------------+-------------+")
@@ -70,14 +67,14 @@ def imprimir_tabela(resultados: List[Dict[str, str]]):
 
 
 def main():
-    arquivos = ["nomes250k.txt", "nomes500k.txt", "nomes750k.txt"]
-    
-    print("⏳ Testando Bubble Sort (versão otimizada)...")
+    arquivos = ["nomes250k.txt", "nomes500k.txt", "nomes750k.txt"]  # Substitua pelos nomes corretos dos seus arquivos
+
+    print("⏳ Testando Selection Sort com múltiplos arquivos...")
     resultados, tempos = testar_algoritmo(arquivos)
-    
-    print("\n📊 RESULTADOS (Bubble Sort Otimizado)")
+
+    print("\n📊 RESULTADOS (Selection Sort)")
     imprimir_tabela(resultados)
-    
+
     print("\nℹ️ Dados para análise:")
     print("Arquivos:", ', '.join(arquivos))
     print("Tempos:", ', '.join(f"{t:.6f}" for t in tempos))
