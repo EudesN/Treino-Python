@@ -1,7 +1,7 @@
 def selection_sort(lista):
     min_index = 0
     for j in range(len(lista) - 1): # controla a lista que precisa ser analizada a cada interação. E '-1' pq o ultimo elemento já vai estar ordenado ao final
-        min_index = j # o inidice minimo é inciado em j pq o 
+        min_index = j # o inidice minimo é inciado em j pq o menor valor sempre sera alocado na posição j + 1
         for i in range(j, len(lista)):
             if lista[i] < lista[min_index]: # encontrar o menor valor
                 min_index = i # armazena o menor valor, prcurando dentro dos valores q ainda não estão ordenados
