@@ -1,6 +1,6 @@
 def insertion_sort(lista):
     n = len(lista)
-    for i in range(1, n): # O primeiro elemento é ignirádo pois uma lista com um unico elemento já está ordenada
+    for i in range(1, n): # O primeiro elemento é ignorado pois uma lista com um unico elemento já está ordenada
         chave = lista[i]
         j = i - 1 # representa a parcela da lista que já está ordenada
         while j >= 0 and lista[j] > chave:
