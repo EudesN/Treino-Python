@@ -18,8 +18,9 @@ class HashTable:
         aux = self.tab[pos]
         while aux: # enquanto existir um Node na lista encadeada
             if aux.key == chave:
-                return aux.value
-            aux = aux.prox
+                return aux.value # devolvo o valor se a chave bater
+            aux = aux.prox # senão, avanço para o próximo nó na lista
+
         raise KeyError(chave) # chave não encontrada
 
     def put(self, chave, valor):
