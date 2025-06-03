@@ -51,7 +51,7 @@ class HashTable:
             else:
                 while aux:
                     print(f"[{aux.key}: {aux.value}] -> ", end="")
-                    aux.prox
+                    aux = aux.prox
                 print("None")
         print("---------------------------")
 

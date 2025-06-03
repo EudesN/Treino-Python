@@ -18,7 +18,7 @@ class HashApp:
                     print(tb.get(chave))
 
                 case 3: #Mostrar todos os elementos da Hash
-                    HashTable.mostrar()
+                    tb.mostrar()
                 
                 case 4:
                     break
