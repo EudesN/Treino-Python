@@ -41,6 +41,20 @@ class HashTable:
         
         self.N += 1 # atualiza o contador total de pares inseridos
 
+    def mostrar(self):
+        print("--------Tabela Hash --------")
+        for i in range(self.M):
+            print(f"Posição {i}: ", end="")
+            aux = self.tab[i]
+            if(aux is None):
+                print("Vazio.")
+            else:
+                while aux:
+                    print(f"[{aux.key}: {aux.value}] -> ", end="")
+                    aux.prox
+                print("None")
+        print("---------------------------")
+
 
 
 
