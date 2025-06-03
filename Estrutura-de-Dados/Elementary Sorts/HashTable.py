@@ -23,12 +23,12 @@ class HashTable:
         raise KeyError(chave) # chave não encontrada
 
     def put(self, chave, valor):
-        pos = self._hash(chave)
-        if self.tab[pos] is None:
+        pos = self._hash(chave) # calcula o indice 
+        if self.tab[pos] is None: # se a posição for vazia cria um novo nó com chave e valor
             self.tab[pos] = Node(chave, valor)
-        else:
+        else: # caso haja colisão 
             aux = self.tab[pos]
-            while aux:
+            while aux: # percorre a lista de nós que já existe naquela posição
                 if aux.key == chave:
                     aux.value = valor
                     return
