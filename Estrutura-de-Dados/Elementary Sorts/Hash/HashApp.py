@@ -1,4 +1,5 @@
-import HashTable
+from HashTable import HashTable
+
 
 class HashApp:
     if __name__ == "__main__":
