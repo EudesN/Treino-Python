@@ -44,7 +44,7 @@ class HashTable:
     def mostrar(self):
         print("--------Tabela Hash --------")
         for i in range(self.M):
-            print(f"Posição {i}: ", end="")
+            print(f"{i}: ", end="")
             aux = self.tab[i]
             if(aux is None):
                 print("Vazio.")
