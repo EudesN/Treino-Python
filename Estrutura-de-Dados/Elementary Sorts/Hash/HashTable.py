@@ -56,7 +56,7 @@ class HashTable:
         print("---------------------------")
 
     def maiorValor(self):
-        maior = None
+        maior = 0
         for i in range(self.M):
             aux = self.tab[i]
             while aux:
