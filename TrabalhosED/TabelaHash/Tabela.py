@@ -11,6 +11,7 @@ class HashTable:
         self.tab = [None] * cap
 
     def _hash(self, chave):
+        chave = chave.lower()
         return hash(chave) % self.M
     
     def get(self, chave):
