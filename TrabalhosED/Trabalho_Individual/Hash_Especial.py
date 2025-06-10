@@ -62,6 +62,32 @@ class HashTable:
         self.tab[pos] = novo
         self.N += 1
 
+    def mostrar(self):
+        print("--------Tabela Hash --------")
+        for i in range(self.M):
+            print(f"{i}: ", end="")
+            aux = self.tab[i]
+            if(aux is None):
+                print("Vazio.")
+            else:
+                while aux:
+                    print(f"[{aux.key}: {aux.value}] -> ", end="")
+                    aux = aux.prox
+                print("None")
+        print("---------------------------")
+
+    def maiorValor(self):
+        maior = 0
+        for i in range(self.M):
+            aux = self.tab[i]
+            while aux:
+                if aux is None:
+                    maior = aux.value
+            else:
+                if aux.value > maior:
+                    maior = aux
+                aux = aux.prox
+        return maior
 
 
 
