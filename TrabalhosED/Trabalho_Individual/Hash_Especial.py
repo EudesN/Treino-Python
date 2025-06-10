@@ -10,12 +10,33 @@ class HashTable:
         self.N = 0
         self.tab = cap * [None]
 
+
 def _hash(self, chave):
     chave = chave.lower()
     soma = 0
     for c in chave:
         soma += ord(c)
     return hash(soma) % self.M
+
+
+class Node:
+    def __init__(self, chave, valor):
+        self.key = chave
+        self.value = valor
+        self.next = None
+
+class HashTable:
+    def __init__(self, cap):
+        self.M = cap
+        self.N = 0
+        self.tab = cap * [None]
+
+    def _hash(self, chave):
+        chave = chave.lower()
+        soma = 0
+        for c in chave:
+            soma += ord(c)
+        return hash(soma) % self.M
 
     def get(self, chave):
         pos = self._hash(chave)
@@ -40,6 +61,23 @@ def _hash(self, chave):
         novo.prox = self.tab[pos]
         self.tab[pos] = novo
         self.N += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
