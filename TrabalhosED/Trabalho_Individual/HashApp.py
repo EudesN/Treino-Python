@@ -6,9 +6,13 @@ class HashApp:
         tb = HashTable(11)
 
         while True:
-            op = int(input("1.Incluir\n2.Buscar\n3.Mostrar\n4.Sair\n"))
             print("1 - Incluir")
             print("2- Buscar")
+            print("3- Mostrar")
+            print("0- Sair")
+
+            op = int(input("informe sua opção: "))
+
             match op:
                 case 1: #Incluir item <chave, valor>
                     chave = input("Nome? ")
@@ -21,6 +25,6 @@ class HashApp:
 
                 case 3: #Mostrar todos os elementos da Hash
                     tb.mostrar()
-                
-                case 4:
+
+                case 0:
                     break
