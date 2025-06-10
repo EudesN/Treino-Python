@@ -7,7 +7,8 @@ class HashApp:
 
         while True:
             op = int(input("1.Incluir\n2.Buscar\n3.Mostrar\n4.Sair\n"))
-            
+            print("1 - Incluir")
+            print("2- Buscar")
             match op:
                 case 1: #Incluir item <chave, valor>
                     chave = input("Nome? ")
