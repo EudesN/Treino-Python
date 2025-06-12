@@ -16,14 +16,15 @@ class HashTable:
             soma += ord(c)
         return hash(soma) % self.M
 
-    def get(self, chave):
-        pos = self._hash(chave)
+    def get(self, nome):
+        pos = self._hash(nome)
         aux = self.tab[pos]
+
         while aux:
-            if aux.key == chave:
+            if aux.dado == nome:
                 return aux.value
             aux = aux.next
-        raise KeyError(chave)
+        raise KeyError(nome)
 
     def put(self, nome):
         pos = self._hash(nome)
