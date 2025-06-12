@@ -1,29 +1,44 @@
 from Hash_Especial import HashTable
 
-
 class HashApp:
-    if __name__ == "__main__":
-        tb = HashTable(11)
+    pass  # A classe está vazia. Pode ser removida se não for usada
 
-        while True:
-            print("1 - Incluir")
-            print("2- Buscar")
-            print("3- Mostrar")
-            print("0- Sair")
+if __name__ == "__main__":
+    tb = HashTable(11)
 
-            op = int(input("informe sua opção: "))
+    while True:
+        print("\n--- MENU ---")
+        print("1 - Incluir nome")
+        print("2 - Buscar nome")
+        print("3 - Mostrar tabela")
+        print("0 - Sair")
 
-            match op:
-                case 1: #Incluir item <chave, valor>
-                    chave = input("Nome? ")
-                    tb.put(chave, valor)
-                
-                case 2: #Buscar um item pela <chave>
-                    chave = input("Nome? ")
-                    print(tb.get(chave))
+        try:
+            op = int(input("Informe sua opção: "))
+        except ValueError:
+            print("Digite um número válido.")
+            continue
 
-                case 3: #Mostrar todos os elementos da Hash
-                    tb.mostrar()
+        match op:
+            case 1: 
+                chave = input("Nome? ")
+                valor = input("Valor? ")  # Ex: idade, telefone, etc.
+                tb.put(chave, valor)
+                print("Nome inserido com sucesso!")
 
-                case 0:
-                    break
+            case 2: 
+                chave = input("Nome? ")
+                try:
+                    print(f"Valor encontrado: {tb.get(chave)}")
+                except KeyError:
+                    print("Nome não encontrado.")
+
+            case 3:
+                tb.mostrar()
+
+            case 0:
+                print("Encerrando...")
+                break
+
+            case _:
+                print("Opção inválida.")
