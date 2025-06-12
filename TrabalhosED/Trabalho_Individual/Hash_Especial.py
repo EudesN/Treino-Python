@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, chave):
-        self.key = chave
+    def __init__(self, dado):
+        self.dado = dado
         self.next = None
 
 class HashTable:
@@ -25,17 +25,17 @@ class HashTable:
             aux = aux.next
         raise KeyError(chave)
 
-    def put(self, chave, valor):
-        pos = self._hash(chave)
-        
+    def put(self, nome):
+        pos = self._hash(nome)
         aux = self.tab[pos]
+
         while aux:
-            if aux.key == chave:
-                aux.value = valor 
+            if aux.dado == nome:
+                print("O nome já está inserido na tabela.")
                 return
             aux = aux.next
         
-        novo = Node(chave, valor)
+        novo = Node(chave)
         novo.next = self.tab[pos]
         self.tab[pos] = novo
         self.N += 1
