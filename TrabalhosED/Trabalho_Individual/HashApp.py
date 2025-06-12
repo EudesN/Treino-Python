@@ -1,11 +1,19 @@
 from Hash_Especial import HashTable
 
-class HashApp:
-    pass  # A classe está vazia. Pode ser removida se não for usada
 
 if __name__ == "__main__":
-    tb = HashTable(11)
+    # Solicita ao usuário o valor de M (capacidade da tabela hash)
+    while True:
+        try:
+            M = int(input("Informe a capacidade da tabela hash (valor de M): "))
+            if M <= 0:
+                print("Digite um número maior que zero.")
+            else:
+                break
+        except ValueError:
+            print("Digite um número inteiro válido.")
 
+    tb = HashTable(M)  # Agora M é informado pelo usuário
     while True:
         print("\n--- MENU ---")
         print("1 - Incluir nome")
