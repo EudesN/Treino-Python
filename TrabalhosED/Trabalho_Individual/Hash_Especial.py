@@ -8,28 +8,7 @@ class HashTable:
     def __init__(self, cap):
         self.M = cap
         self.N = 0
-        self.tab = cap * [None]
-
-
-def _hash(self, chave):
-    chave = chave.lower()
-    soma = 0
-    for c in chave:
-        soma += ord(c)
-    return hash(soma) % self.M
-
-
-class Node:
-    def __init__(self, chave, valor):
-        self.key = chave
-        self.value = valor
-        self.next = None
-
-class HashTable:
-    def __init__(self, cap):
-        self.M = cap
-        self.N = 0
-        self.tab = cap * [None]
+        self.tab = [None] * cap
 
     def _hash(self, chave):
         chave = chave.lower()
@@ -44,7 +23,7 @@ class HashTable:
         while aux:
             if aux.key == chave:
                 return aux.value
-            aux = aux.prox
+            aux = aux.next
         raise KeyError(chave)
 
     def put(self, chave, valor):
@@ -55,10 +34,10 @@ class HashTable:
             if aux.key == chave:
                 aux.value = valor 
                 return
-            aux = aux.prox
+            aux = aux.next
         
         novo = Node(chave, valor)
-        novo.prox = self.tab[pos]
+        novo.next = self.tab[pos]
         self.tab[pos] = novo
         self.N += 1
 
@@ -72,22 +51,20 @@ class HashTable:
             else:
                 while aux:
                     print(f"[{aux.key}: {aux.value}] -> ", end="")
-                    aux = aux.prox
+                    aux = aux.next
                 print("None")
         print("---------------------------")
+        print(f"Fator de carga: {self.N}/{self.M} = {self.N / self.M:.2f}")
 
-    def maiorValor(self):
-        maior = 0
-        for i in range(self.M):
-            aux = self.tab[i]
-            while aux:
-                if aux is None:
-                    maior = aux.value
-            else:
-                if aux.value > maior:
-                    maior = aux
-                aux = aux.prox
-        return maior
+def maiorValor(self):
+    maior = 0
+    for i in range(self.M):
+        aux = self.tab[i]
+        while aux:
+            if aux.value > maior:
+                maior = aux.value 
+            aux = aux.next  
+    return maior
 
 
 
