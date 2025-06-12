@@ -35,7 +35,7 @@ class HashTable:
                 return
             aux = aux.next
         
-        novo = Node(chave)
+        novo = Node(nome)
         novo.next = self.tab[pos]
         self.tab[pos] = novo
         self.N += 1
