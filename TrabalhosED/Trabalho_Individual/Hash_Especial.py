@@ -1,7 +1,6 @@
 class Node:
-    def __init__(self, chave, valor):
+    def __init__(self, chave):
         self.key = chave
-        self.value = valor
         self.next = None
 
 class HashTable:
@@ -56,15 +55,6 @@ class HashTable:
         print("---------------------------")
         print(f"Fator de carga: {self.N}/{self.M} = {self.N / self.M:.2f}")
 
-def maiorValor(self):
-    maior = 0
-    for i in range(self.M):
-        aux = self.tab[i]
-        while aux:
-            if aux.value > maior:
-                maior = aux.value 
-            aux = aux.next  
-    return maior
 
 
 
