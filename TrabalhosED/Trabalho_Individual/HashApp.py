@@ -16,7 +16,6 @@ class HashApp:
             match op:
                 case 1: #Incluir item <chave, valor>
                     chave = input("Nome? ")
-                    valor = int(input("Valor? "))
                     tb.put(chave, valor)
                 
                 case 2: #Buscar um item pela <chave>
