@@ -11,11 +11,11 @@ df_movies = pd.read_csv(url)
 # Preenche valores numéricos ausentes (NaN) com a média da coluna
 df_movies_limpo = df_movies.fillna(df_movies.mean(numeric_only=True))
 # Preenche valores de gênero ausentes com 'Outro' para que não sejam ignorados
-df_movies_limpo['gênero'].fillna('Outro', inplace=True)
+df_movies_limpo['genre'].fillna('Outro', inplace=True)
 
 # 4. Agrupar os dados por gênero e calcular a bilheteria
 # Agrupa o DataFrame pela coluna 'genre' e soma a 'worldwide_gross' para cada grupo
-arrecadacao_por_genero = df_movies_limpo.groupby('genero')['worldwide_gross'].sum()
+arrecadacao_por_genero = df_movies_limpo.groupby('genre')['worldwide_gross'].sum()
 
 # Calcula o percentual de cada gênero sobre o total
 total_mundial = arrecadacao_por_genero.sum()
@@ -43,21 +43,3 @@ fig.gca().add_artist(centre_circle)
 plt.title('Participação Percentual da Bilheteria Mundial por Gênero', fontsize=16)
 plt.axis('equal')  # Garante que a pizza seja um círculo perfeito
 plt.show() # Exibe o gráfico
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
