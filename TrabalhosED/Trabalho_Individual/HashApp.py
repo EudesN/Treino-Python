@@ -13,7 +13,7 @@ if __name__ == "__main__":
         except ValueError:
             print("Digite um número inteiro válido.")
 
-    tb = HashTable(M)  # Agora M é informado pelo usuário
+    tb = HashTable(M) 
     while True:
         print("\n--- MENU ---")
         print("1 - Incluir nome")
@@ -30,8 +30,7 @@ if __name__ == "__main__":
         match op:
             case 1: 
                 chave = input("Nome? ")
-                valor = input("Valor? ")  # Ex: idade, telefone, etc.
-                tb.put(chave, valor)
+                tb.put(chave)
                 print("Nome inserido com sucesso!")
 
             case 2: 
