@@ -1,60 +1,50 @@
+# 1. Importar bibliotecas
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import FuncFormatter, MaxNLocator
 
-# 1. Carregar os dados
+# 2. Carregar o conjunto de dados a partir da URL
 url = 'https://raw.githubusercontent.com/armandossrecife/lp20231/refs/heads/main/top-500-movies.csv'
-df = pd.read_csv(url)
+df_movies = pd.read_csv(url)
 
-# 2. Limpeza
-# 2.1 Preenche NaN numéricos com a média da coluna
-df = df.fillna(df.mean(numeric_only=True))
+# 3. Limpeza e Preparação dos Dados
+# Preenche valores numéricos ausentes (NaN) com a média
+df_movies_limpo = df_movies.fillna(df_movies.mean(numeric_only=True))
 
-# 2.2 Preenche NaN de gênero com 'Outro' 
-#    -> substitui inplace para evitar chained assignment warning
-df['genre'] = df['genre'].fillna('Outro')
+# Converte a coluna 'year' para inteiro, para garantir que não haja casas decimais
+df_movies_limpo['year'] = df_movies_limpo['year'].astype(int)
 
-# 3. Soma da bilheteria por gênero
-arrecada = df.groupby('genre')['worldwide_gross'].sum()
+# 4. Análise de Série Temporal
+# Define o período desejado (últimos 25 anos, de 2000 a 2024)
+ano_inicio = 2000
+df_periodo = df_movies_limpo[df_movies_limpo['year'] >= ano_inicio].copy()
 
-# 4. Percentuais
-total = arrecada.sum()
-pct = (arrecada / total) * 100
-pct = pct.sort_values(ascending=False)
+# Agrupa por ano e soma a bilheteria mundial
+bilheteria_anual = df_periodo.groupby('year')['worldwide_gross'].sum()
 
-# 5. Agrupar fatias pequenas em 'Outros'
-limite = 2.0  # percentuais abaixo de 2% serão consolidados
-grandes = pct[pct >= limite]
-pequenos = pct[pct < limite].sum()
+# Garante que os dados estejam ordenados por ano
+bilheteria_anual = bilheteria_anual.sort_index()
 
-#    -> usa pd.concat em vez de append
-pct_corrigido = pd.concat([
-    grandes,
-    pd.Series({'Outros': pequenos})
-])
+# 5. Criar e Exibir o Gráfico de Linha
+plt.style.use('seaborn-v0_8-whitegrid') # Define um estilo visual
+fig, ax = plt.subplots(figsize=(14, 8))
 
-# 6. Plotagem
-plt.figure(figsize=(10, 8))
-explode = [0.02 if genre != 'Outros' else 0.1 for genre in pct_corrigido.index]
+# Plotta a linha principal
+ax.plot(bilheteria_anual.index, bilheteria_anual.values, marker='o', linestyle='-', color='b', label='Bilheteria Mundial')
 
-wedges, textos, autotextos = plt.pie(
-    pct_corrigido,
-    labels=None,
-    autopct='%1.1f%%',
-    startangle=140,
-    pctdistance=0.7,
-    explode=explode,
-    wedgeprops={'linewidth': 0.5, 'edgecolor': 'white'}
-)
+# Adiciona uma linha de tendência (média móvel de 3 anos para suavizar a curva)
+media_movel = bilheteria_anual.rolling(window=3).mean()
+ax.plot(media_movel.index, media_movel.values, linestyle='--', color='r', label='Tendência (Média Móvel 3 anos)')
 
-plt.legend(
-    wedges,
-    pct_corrigido.index,
-    title='Gêneros',
-    bbox_to_anchor=(1, 0, 0.5, 1),
-    loc='center left'
-)
 
-plt.title('Participação Percentual da Bilheteria Mundial por Gênero', fontsize=16)
-plt.axis('equal')
-plt.tight_layout()
-plt.show()
+# Título e rótulos
+ax.set_title(f'Evolução da Bilheteria Mundial Anual ({ano_inicio} - {bilheteria_anual.index.max()})', fontsize=18, pad=20)
+ax.set_xlabel('Ano de Lançamento', fontsize=12)
+ax.set_ylabel('Bilheteria Mundial Total', fontsize=12)
+
+# Função para formatar o eixo Y em bilhões
+def formatar_bilhoes(x, pos):
+    return f'${x*1e-9:.0f}B'
+ax.yaxis.set_major_formatter(FuncFormatter(formatar_bilhoes))
+
+# Garante que os anos
