@@ -47,4 +47,10 @@ def formatar_bilhoes(x, pos):
     return f'${x*1e-9:.0f}B'
 ax.yaxis.set_major_formatter(FuncFormatter(formatar_bilhoes))
 
-# Garante que os anos
+# Garante que os anos no eixo X sejam números inteiros
+ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+plt.xticks(rotation=45) # Rotaciona os anos para melhor leitura
+
+ax.legend() # Mostra a legenda
+plt.tight_layout()
+plt.show()

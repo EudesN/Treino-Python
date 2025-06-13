@@ -1,43 +1,33 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
 
-# 1. Carrega e limpa os dados
+# 1. Carrega os dados
 url = 'https://raw.githubusercontent.com/armandossrecife/lp20231/refs/heads/main/top-500-movies.csv'
 df = pd.read_csv(url)
-df = df.fillna(df.mean(numeric_only=True))
-df['genre'] = df['genre'].fillna('Outro')  # evita chained assignment
 
-# 2. Soma e calcula percentuais
-arrecada = df.groupby('genre')['worldwide_gross'].sum()
-total = arrecada.sum()
-pct = (arrecada / total) * 100
-pct = pct.sort_values(ascending=False)
+# 2. Converte 'release_date' para datetime (trata erros)
+df['release_date'] = pd.to_datetime(df['release_date'], errors='coerce')
 
-# 3. Agrupa gêneros com <2% em 'Outros'
-limite = 2.0
-grandes = pct[pct >= limite]
-pequenos = pct[pct < limite].sum()
-pct_corrigido = pd.concat([grandes, pd.Series({'Outros': pequenos})])
+# 3. Cria uma nova coluna com o ano de lançamento
+df['ano'] = df['release_date'].dt.year
 
-# 4. Desenha o gráfico de pizza
-plt.figure(figsize=(10, 8))
+# 4. Filtra os últimos 25 anos
+ano_atual = datetime.now().year
+ultimos_25_anos = df[(df['ano'] >= ano_atual - 25) & (df['ano'] <= ano_atual)]
 
-# explode só a fatia 'Outros' para destacá-la
-explode = [0.02 if g != 'Outros' else 0.1 for g in pct_corrigido.index]
+# 5. Remove valores nulos de bilheteria
+ultimos_25_anos = ultimos_25_anos.dropna(subset=['worldwide_gross'])
 
-wedges, texts, autotexts = plt.pie(
-    pct_corrigido,
-    labels=pct_corrigido.index,   # rótulos com o nome do gênero
-    autopct='%1.1f%%',             # mostra o percentual dentro da fatia
-    startangle=140,
-    explode=explode,
-    pctdistance=0.6,               # distancia do texto %=0.6 do centro
-    labeldistance=1.1,             # distancia dos rótulos: >1 afasta para fora
-    wedgeprops={'linewidth': 0.5, 'edgecolor': 'white'}
-)
+# 6. Agrupa por ano e soma a bilheteria
+arrecadacao_anual = ultimos_25_anos.groupby('ano')['worldwide_gross'].sum()
 
-# 5. Ajustes finais
-plt.title('Participação Percentual da Bilheteria Mundial por Gênero', fontsize=16)
-plt.axis('equal')   # círculo perfeito
-plt.tight_layout()  # ajusta margens para os rótulos caberem
+# 7. Plota o gráfico de série temporal
+plt.figure(figsize=(12, 6))
+plt.plot(arrecadacao_anual.index, arrecadacao_anual.values, marker='o', color='blue', linewidth=2)
+plt.title('Evolução da Arrecadação Mundial nos Últimos 25 Anos', fontsize=16)
+plt.xlabel('Ano')
+plt.ylabel('Bilheteria Mundial (US$)')
+plt.grid(True)
+plt.tight_layout()
 plt.show()
