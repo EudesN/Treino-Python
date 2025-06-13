@@ -1,45 +1,57 @@
-# 1. Importar bibliotecas necessárias
+# 1. Importar bibliotecas
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # 2. Carregar o conjunto de dados a partir da URL
-# O pandas pode ler arquivos CSV diretamente de um link da internet.
 url = 'https://raw.githubusercontent.com/armandossrecife/lp20231/refs/heads/main/top-500-movies.csv'
 df_movies = pd.read_csv(url)
 
 # 3. Limpeza e Preparação dos Dados
 # Preenche valores numéricos ausentes (NaN) com a média da coluna
 df_movies_limpo = df_movies.fillna(df_movies.mean(numeric_only=True))
-# Preenche valores de gênero ausentes com 'Outro' para que não sejam ignorados
-df_movies_limpo['genre'].fillna('Outro', inplace=True)
 
-# 4. Agrupar os dados por gênero e calcular a bilheteria
-# Agrupa o DataFrame pela coluna 'genre' e soma a 'worldwide_gross' para cada grupo
-arrecadacao_por_genero = df_movies_limpo.groupby('genre')['worldwide_gross'].sum()
+# 4. Selecionar os 20 filmes com maior bilheteria mundial
+filmes_maior_bilheteria = df_movies_limpo.sort_values('worldwide_gross', ascending=False).head(20)
 
-# Calcula o percentual de cada gênero sobre o total
-total_mundial = arrecadacao_por_genero.sum()
-percentuais = (arrecadacao_por_genero / total_mundial) * 100
+# Para o gráfico horizontal, é melhor ordenar do menor para o maior,
+# assim o maior valor aparece no topo do gráfico.
+filmes_grafico = filmes_maior_bilheteria.sort_values('worldwide_gross', ascending=True)
 
-# Ordena os valores para o gráfico ficar mais organizado
-percentuais_ordenado = percentuais.sort_values(ascending=False)
+# Extrair os títulos e os valores de arrecadação
+titulos = filmes_grafico['title']
+arrecadacao = filmes_grafico['worldwide_gross']
 
-# 5. Criar e exibir o Gráfico de Pizza (ou Rosca)
-plt.figure(figsize=(12, 10)) # Define o tamanho do gráfico
 
-# Cria o gráfico de pizza com os dados, rótulos e formatação de percentual
-plt.pie(percentuais_ordenado,
-        labels=percentuais_ordenado.index,
-        autopct='%1.1f%%', # Formato do percentual
-        startangle=140,   # Ângulo inicial para melhor visualização
-        pctdistance=0.85) # Distância do texto de percentual em relação ao centro
+# 5. Criar e Exibir o Gráfico de Barras Horizontais
+plt.style.use('seaborn-v0_8-talk') # Usar um estilo visualmente agradável
+fig, ax = plt.subplots(figsize=(12, 10)) # Criar a figura e os eixos
 
-# Opcional: Adiciona um círculo no centro para criar um efeito de "rosca" (donut chart)
-centre_circle = plt.Circle((0,0), 0.70, fc='white')
-fig = plt.gcf()
-fig.gca().add_artist(centre_circle)
+# Cria as barras horizontais
+bars = ax.barh(titulos, arrecadacao, color='#3498db')
 
-# Título e ajustes finais
-plt.title('Participação Percentual da Bilheteria Mundial por Gênero', fontsize=16)
-plt.axis('equal')  # Garante que a pizza seja um círculo perfeito
+# Título e rótulos dos eixos
+ax.set_title('Top 20 Filmes por Bilheteria Mundial', fontsize=18, pad=20)
+ax.set_xlabel('Bilheteria Mundial (em bilhões de dólares)', fontsize=12)
+ax.set_ylabel('Filme', fontsize=12)
+
+# Formatar os números do eixo X para ficarem mais legíveis (ex: 2.5B em vez de 2,500,000,000)
+def formatar_bilhoes(x, pos):
+    return f'{x*1e-9:.1f}B' # Converte o número para bilhões com 1 casa decimal
+from matplotlib.ticker import FuncFormatter
+ax.xaxis.set_major_formatter(FuncFormatter(formatar_bilhoes))
+
+# Remover as bordas do gráfico para um visual mais limpo
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_visible(False)
+
+# Adicionar os valores no final de cada barra para clareza
+for bar in bars:
+    width = bar.get_width()
+    label_x_pos = width + 1e8 # Posição um pouco à frente da barra
+    ax.text(label_x_pos, bar.get_y() + bar.get_height()/2, f'{width*1e-9:.2f}B',
+            va='center', ha='center', fontsize=10)
+
+
+plt.tight_layout() # Ajusta o layout para evitar cortes
 plt.show() # Exibe o gráfico
